@@ -12,57 +12,13 @@ export default function FeaturedWork() {
           <div className="eyebrow">Featured Work</div>
           <h2>Case studies, not just screens.</h2>
           <p>
-            Three products, three different problems — each solved with
+            Two products, two different problems — each solved with
             research-backed structure and a distinct visual voice.
           </p>
         </div>
 
         <div className="projects-list">
           {/* Project 1: Online Appointment Booking System */}
-          <div className={`project-card glass reveal ${isIntersecting ? "in" : ""}`}>
-            <div
-              className="project-visual"
-              style={{
-                background:
-                  "radial-gradient(circle at 30% 20%, rgba(79,140,255,.28), transparent 60%), radial-gradient(circle at 80% 80%, rgba(236,111,187,.22), transparent 55%)",
-              }}
-            >
-              <div className="mock">
-                <div className="mock-bar w40"></div>
-                <div className="mock-bar w60"></div>
-                <div className="mock-block"></div>
-                <div className="mock-bar w40"></div>
-              </div>
-            </div>
-            <div className="project-body">
-              <div className="project-cat">
-                Healthcare &amp; Services — Web App
-              </div>
-              <h3>Online Appointment Booking System</h3>
-              <p>
-                A streamlined scheduling platform that removes friction from
-                booking appointments — clear availability, minimal steps, and
-                confirmation at every stage.
-              </p>
-              <div className="project-results">
-                <div className="result-item">
-                  <div className="r-num">3-step</div>
-                  <div className="r-lbl">Booking Flow</div>
-                </div>
-                <div className="result-item">
-                  <div className="r-num">100%</div>
-                  <div className="r-lbl">Responsive Layout</div>
-                </div>
-                <div className="result-item">
-                  <div className="r-num">2</div>
-                  <div className="r-lbl">User Personas</div>
-                </div>
-              </div>
-              <a href="#" className="project-cta">
-                View Case Study <span>→</span>
-              </a>
-            </div>
-          </div>
 
           {/* Project 2: StyleMyHome */}
           <div className={`project-card glass reveal ${isIntersecting ? "in" : ""}`}>

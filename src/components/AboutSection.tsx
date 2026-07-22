@@ -11,7 +11,7 @@ export default function AboutSection() {
         <div className={`about-portrait reveal ${isIntersecting ? "in" : ""}`}>
           <div className="about-portrait-inner">
             <img
-              src="/images/riya_about.jpg"
+              src="/images/riya_hero.jpg"
               alt="Riya Jethva — UI/UX & Visual Designer"
               className="about-portrait-img"
             />
