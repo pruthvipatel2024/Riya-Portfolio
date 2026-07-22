@@ -16,7 +16,7 @@ export default function ExperienceSection() {
         <div className={`exp-track reveal ${isIntersecting ? "in" : ""}`}>
           <div className="exp-card glass">
             <div className="exp-dot"></div>
-            <div className="exp-date">2024 — Present</div>
+            <div className="exp-date">2026 — Present</div>
             <h4>UI/UX Designer</h4>
             <p>
               Designing digital products, case studies, and design systems with a
@@ -26,7 +26,7 @@ export default function ExperienceSection() {
 
           <div className="exp-card glass">
             <div className="exp-dot"></div>
-            <div className="exp-date">2023 — 2024</div>
+            <div className="exp-date">2025 — 2026</div>
             <h4>UI/UX Intern at MageComp LLP</h4>
             <p>
               Collaborated with product teams to design web and mobile
@@ -38,7 +38,7 @@ export default function ExperienceSection() {
           <div className="exp-card glass">
             <div className="exp-dot"></div>
             <div className="exp-date">Practice</div>
-            <h4>Graphic Design Practice</h4>
+            <h4>UI/UX Design Practice</h4>
             <p>
               Regular exploration in Illustrator and Photoshop to strengthen
               visual composition, typography, and brand-level thinking.

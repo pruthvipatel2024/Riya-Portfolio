@@ -3,14 +3,18 @@
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 
 export default function AboutSection() {
-  const { elementRef, isIntersecting } = useIntersectionObserver();
+  const { elementRef, isIntersecting } = useIntersectionObserver(0.2);
 
   return (
     <section id="about" ref={elementRef}>
       <div className="wrap about-grid">
         <div className={`about-portrait reveal ${isIntersecting ? "in" : ""}`}>
           <div className="about-portrait-inner">
-            <span>RJ</span>
+            <img
+              src="/images/riya_about.jpg"
+              alt="Riya Jethva — UI/UX & Visual Designer"
+              className="about-portrait-img"
+            />
           </div>
         </div>
         <div>

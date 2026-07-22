@@ -4,7 +4,7 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { FormEvent, useState } from "react";
 
 export default function ContactSection() {
-  const { elementRef, isIntersecting } = useIntersectionObserver();
+  const { elementRef, isIntersecting } = useIntersectionObserver(0.2);
   const [btnText, setBtnText] = useState("Send Message");
 
   const handleSubmit = (e: FormEvent) => {
@@ -26,6 +26,7 @@ export default function ContactSection() {
               fontSize: "16px",
               lineHeight: 1.7,
               fontWeight: 300,
+              marginBottom: "32px",
             }}
           >
             Open to freelance projects, internships, and full-time UI/UX roles.
@@ -33,31 +34,35 @@ export default function ContactSection() {
           </p>
 
           <div className="contact-links">
-            <a href="mailto:hello@riyajethva.design" className="contact-link glass">
+            <a
+              href="mailto:riyajethva211@gmail.com"
+              className="contact-link glass"
+            >
               <div>
-                <div className="cl-label">Email</div>
-                <div className="cl-value">hello@riyajethva.design</div>
+                <div className="cl-label">EMAIL</div>
+                <div className="cl-value">riyajethva211@gmail.com</div>
               </div>
               <span className="contact-arrow">↗</span>
             </a>
-            <a href="#" className="contact-link glass">
+            <a
+              href="https://www.linkedin.com/in/riya-jethva-5b68423b5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="contact-link glass"
+            >
               <div>
-                <div className="cl-label">LinkedIn</div>
-                <div className="cl-value">/in/riyajethva</div>
+                <div className="cl-label">LINKEDIN</div>
+                <div className="cl-value">/in/riya-jethva-5b68423b5</div>
               </div>
               <span className="contact-arrow">↗</span>
             </a>
-            <a href="#" className="contact-link glass">
+            <a
+              href="tel:+919265911944"
+              className="contact-link glass"
+            >
               <div>
-                <div className="cl-label">Behance</div>
-                <div className="cl-value">be.net/riyajethva</div>
-              </div>
-              <span className="contact-arrow">↗</span>
-            </a>
-            <a href="#" className="contact-link glass">
-              <div>
-                <div className="cl-label">Dribbble</div>
-                <div className="cl-value">dribbble.com/riyajethva</div>
+                <div className="cl-label">CONTACT</div>
+                <div className="cl-value">+91 92659 11944</div>
               </div>
               <span className="contact-arrow">↗</span>
             </a>
@@ -69,7 +74,7 @@ export default function ContactSection() {
           onSubmit={handleSubmit}
         >
           <div className="form-row">
-            <label htmlFor="cf-name">Name</label>
+            <label htmlFor="cf-name">NAME</label>
             <input
               id="cf-name"
               type="text"
@@ -78,7 +83,7 @@ export default function ContactSection() {
             />
           </div>
           <div className="form-row">
-            <label htmlFor="cf-email">Email</label>
+            <label htmlFor="cf-email">EMAIL</label>
             <input
               id="cf-email"
               type="email"
@@ -87,7 +92,7 @@ export default function ContactSection() {
             />
           </div>
           <div className="form-row">
-            <label htmlFor="cf-msg">Message</label>
+            <label htmlFor="cf-msg">MESSAGE</label>
             <textarea
               id="cf-msg"
               placeholder="Tell me about your project..."

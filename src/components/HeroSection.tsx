@@ -73,6 +73,12 @@ export default function HeroSection() {
               <span>Photoshop</span>
             </div>
 
+            {/* Illustrator floating badge middle-left */}
+            <div className="floating-badge badge-middle-left">
+              <div className="ai-icon">Ai</div>
+              <span>Illustrator</span>
+            </div>
+
             {/* Figma floating badge bottom-left */}
             <div className="floating-badge badge-bottom-left">
               <svg className="figma-icon" width="18" height="18" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">

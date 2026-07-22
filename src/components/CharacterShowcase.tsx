@@ -21,8 +21,14 @@ export default function CharacterShowcase() {
         <div className="char-showcase" id="charShowcase">
           <div className={`char-piece reveal ${isIntersecting ? "in" : ""}`}>
             <img
+              src="/images/image_v5_20.jpg"
+              alt="Yoo Family Collectible Character Cards Vertical Grid"
+            />
+          </div>
+          <div className={`char-piece reveal ${isIntersecting ? "in" : ""}`} style={{ marginTop: "32px" }}>
+            <img
               src="/images/image_v5_21.jpg"
-              alt="Yoo Family Collectible Character Cards"
+              alt="Yoo Family Collectible Character Cards Pedestals"
             />
           </div>
         </div>
