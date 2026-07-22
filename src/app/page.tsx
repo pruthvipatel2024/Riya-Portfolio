@@ -8,6 +8,7 @@ import FeaturedWork from "@/components/FeaturedWork";
 import BrandShowcase from "@/components/BrandShowcase";
 import AppShowcase from "@/components/AppShowcase";
 import CharacterShowcase from "@/components/CharacterShowcase";
+import PosterShowcase from "@/components/PosterShowcase";
 import ExperienceSection from "@/components/ExperienceSection";
 import ProcessSection from "@/components/ProcessSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -28,6 +29,7 @@ export default function Home() {
         <BrandShowcase />
         <AppShowcase />
         <CharacterShowcase />
+        <PosterShowcase />
         <ExperienceSection />
         <ProcessSection />
         <TestimonialsSection />

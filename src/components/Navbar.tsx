@@ -53,6 +53,11 @@ export default function Navbar() {
               </a>
             </li>
             <li>
+              <a href="#posters" onClick={closeMobileMenu}>
+                Posters
+              </a>
+            </li>
+            <li>
               <a href="#process" onClick={closeMobileMenu}>
                 Process
               </a>
