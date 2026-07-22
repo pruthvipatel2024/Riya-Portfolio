@@ -780,3 +780,554 @@
   ::-webkit-scrollbar-thumb{ background:linear-gradient(var(--purple),var(--blue)); border-radius:10px; }
 
   :focus-visible{ outline:2px solid var(--purple-soft); outline-offset:3px; }
+
+  /* ---------- Interactive Name Card (About Section) ---------- */
+  .interactive-name-card {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    border-radius: 24px;
+    background: linear-gradient(155deg, rgba(20, 16, 38, 0.95), rgba(10, 8, 20, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px;
+    user-select: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 20px 50px -15px rgba(139, 92, 246, 0.25);
+    transform-style: preserve-3d;
+  }
+  .interactive-name-card:hover {
+    border-color: rgba(236, 111, 187, 0.45);
+    box-shadow: 0 25px 65px -15px rgba(139, 92, 246, 0.45), 0 0 30px -5px rgba(244, 114, 182, 0.3);
+  }
+  .interactive-name-card.clicked {
+    animation: cardPulse 0.6s var(--ease);
+  }
+  @keyframes cardPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+  }
+
+  .card-spotlight {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+    border-radius: 24px;
+  }
+
+  .card-grid-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.15;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: 0;
+  }
+
+  .card-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.4;
+    pointer-events: none;
+    transition: all 0.8s ease;
+  }
+  .card-orb.orb-a {
+    width: 180px; height: 180px;
+    background: var(--purple);
+    top: -20px; left: -20px;
+  }
+  .card-orb.orb-b {
+    width: 160px; height: 160px;
+    background: var(--pink);
+    bottom: -20px; right: -20px;
+  }
+  .interactive-name-card:hover .card-orb.orb-a {
+    transform: scale(1.3) translate(20px, 20px);
+    opacity: 0.65;
+  }
+  .interactive-name-card:hover .card-orb.orb-b {
+    transform: scale(1.3) translate(-20px, -20px);
+    opacity: 0.65;
+  }
+
+  .interactive-status-badge {
+    position: relative;
+    z-index: 5;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+  }
+  .live-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px #34d399;
+    animation: livePulse 1.5s infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .name-animation-wrapper {
+    position: relative;
+    z-index: 5;
+    margin: auto 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .animated-pen-tip {
+    position: absolute;
+    font-size: 20px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.7);
+    transition: opacity 0.3s ease, left 0.1s ease, top 0.1s ease, transform 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.8));
+  }
+  .animated-pen-tip.writing {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1) rotate(-15deg);
+    animation: penWiggle 0.6s infinite ease-in-out alternate;
+  }
+  @keyframes penWiggle {
+    0% { transform: translate(-50%, -100%) scale(1) rotate(-15deg); }
+    100% { transform: translate(-45%, -110%) scale(1.1) rotate(5deg); }
+  }
+
+  .name-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+  }
+  .name-word {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+  }
+
+  .animated-char {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 3.8vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
+    display: inline-block;
+    transition: all 0.4s var(--ease);
+    transform-origin: center;
+  }
+
+  .interactive-name-card:hover .animated-char,
+  .interactive-name-card.active .animated-char,
+  .animated-char.animate {
+    animation: charWrite 0.7s var(--ease) forwards;
+  }
+
+  @keyframes charWrite {
+    0% {
+      opacity: 0.2;
+      transform: translateY(10px) scale(0.85);
+      -webkit-text-stroke: 1.5px rgba(167, 139, 250, 0.4);
+      color: transparent;
+    }
+    40% {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.12);
+      -webkit-text-stroke: 0px transparent;
+      color: #ec4899;
+      filter: drop-shadow(0 0 16px rgba(244, 114, 182, 0.9));
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      -webkit-text-stroke: 0px transparent;
+      background: linear-gradient(135deg, #ffffff 0%, #a78bfa 40%, #f472b6 70%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 0 12px rgba(167, 139, 250, 0.5));
+    }
+  }
+
+  .signature-stroke-container {
+    width: 80%;
+    max-width: 280px;
+    height: 40px;
+    margin-top: -10px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 5;
+  }
+  .signature-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .flourish-path {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .interactive-name-card:hover .flourish-path,
+  .interactive-name-card.active .flourish-path,
+  .flourish-path.draw {
+    stroke-dashoffset: 0;
+  }
+
+  .interactive-meta {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .interactive-name-card:hover .interactive-meta,
+  .interactive-name-card.active .interactive-meta,
+  .interactive-meta.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .role-tag {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple-soft);
+  }
+  .mini-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+  .mini-chips .chip {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--ink-dim);
+    transition: all 0.3s ease;
+  }
+  .interactive-name-card:hover .mini-chips .chip {
+    background: rgba(167, 139, 250, 0.15);
+    border-color: rgba(167, 139, 250, 0.3);
+    color: #fff;
+  }
+
+  .card-footer-hint {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    letter-spacing: 0.03em;
+    transition: color 0.3s ease;
+  }
+  .interactive-name-card:hover .card-footer-hint {
+    color: var(--ink-dim);
+  }
+
+  .sparkle-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 20;
+    animation: flyParticle 1s ease-out forwards;
+  }
+  @keyframes flyParticle {
+    0% { opacity: 1; transform: translate(0, 0) scale(1); }
+    100% { opacity: 0; transform: translate(var(--tx, 20px), var(--ty, -30px)) scale(0); }
+  }
+
+  /* ---------- Interactive Hero Visual Card ---------- */
+  .hero-interactive-container {
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-tool-toast {
+    position: absolute;
+    top: -46px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    padding: 8px 18px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(15, 12, 28, 0.92);
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.5);
+    backdrop-filter: blur(14px);
+    white-space: nowrap;
+    animation: toastPop 0.35s var(--ease);
+  }
+  @keyframes toastPop {
+    0% { opacity: 0; transform: translate(-50%, 10px) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  }
+
+  .hero-portrait-card {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 32px;
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    box-shadow: 0 30px 80px -20px rgba(139, 92, 246, 0.4);
+    transform-style: preserve-3d;
+  }
+
+  .hero-portrait-card.theme-holo {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.6), rgba(79, 140, 255, 0.3), rgba(236, 111, 187, 0.5));
+  }
+  .hero-portrait-card.theme-neon {
+    background: linear-gradient(145deg, rgba(244, 114, 182, 0.8), rgba(251, 191, 36, 0.5), rgba(167, 139, 250, 0.6));
+    box-shadow: 0 30px 90px -20px rgba(244, 114, 182, 0.5);
+  }
+  .hero-portrait-card.theme-cyber {
+    background: linear-gradient(145deg, rgba(96, 165, 250, 0.8), rgba(52, 211, 153, 0.5), rgba(139, 92, 246, 0.6));
+    box-shadow: 0 30px 90px -20px rgba(96, 165, 250, 0.5);
+  }
+  .hero-portrait-card.theme-blueprint {
+    background: linear-gradient(145deg, rgba(52, 211, 153, 0.7), rgba(96, 165, 250, 0.4), rgba(255, 255, 255, 0.3));
+    box-shadow: 0 30px 90px -20px rgba(52, 211, 153, 0.4);
+  }
+
+  .conic-border-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 34px;
+    background: conic-gradient(from 0deg, var(--purple), var(--pink), var(--blue), var(--purple));
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+    animation: spinConic 6s linear infinite;
+  }
+  @keyframes spinConic {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .hero-portrait-card:hover .conic-border-glow {
+    opacity: 0.6;
+  }
+
+  .holographic-beam {
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    pointer-events: none;
+    z-index: 4;
+    transition: opacity 0.3s ease;
+  }
+
+  .portrait-inner-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    background: #0a0912;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    z-index: 2;
+  }
+
+  .hero-img-styled {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    border-radius: 26px;
+    transition: filter 0.5s ease, transform 0.5s var(--ease);
+  }
+  .hero-portrait-card:hover .hero-img-styled {
+    transform: scale(1.04);
+  }
+
+  .holo-mesh-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 26px;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.2;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Figma Selection Box Effect */
+  .figma-bounding-box {
+    position: absolute;
+    inset: 12px;
+    border: 1.5px dashed rgba(167, 139, 250, 0.4);
+    border-radius: 18px;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.3;
+    transition: opacity 0.4s ease, border-color 0.4s ease;
+  }
+  .figma-bounding-box.active {
+    opacity: 1;
+    border: 1.5px solid #a78bfa;
+    box-shadow: 0 0 16px rgba(167, 139, 250, 0.3);
+  }
+  .figma-bounding-box .handle {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: #ffffff;
+    border: 1.5px solid #a78bfa;
+    border-radius: 2px;
+  }
+  .figma-bounding-box .handle.top-left { top: -5px; left: -5px; }
+  .figma-bounding-box .handle.top-right { top: -5px; right: -5px; }
+  .figma-bounding-box .handle.bottom-left { bottom: -5px; left: -5px; }
+  .figma-bounding-box .handle.bottom-right { bottom: -5px; right: -5px; }
+
+  .dimension-badge {
+    position: absolute;
+    top: -12px;
+    left: 14px;
+    font-size: 10px;
+    font-family: monospace;
+    color: #fff;
+    background: #a78bfa;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Live Figma Cursor Overlay */
+  .figma-live-cursor {
+    position: absolute;
+    z-index: 20;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transform: translate(0, 0);
+    transition: left 0.05s ease-out, top 0.05s ease-out;
+  }
+  .cursor-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #fff;
+    background: #a78bfa;
+    padding: 2px 8px;
+    border-radius: 4px 10px 10px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+  }
+
+  .portrait-caption-glow {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+    padding: 24px 20px 16px;
+    background: linear-gradient(180deg, transparent 0%, rgba(4, 3, 10, 0.95) 90%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-radius: 0 0 26px 26px;
+  }
+  .caption-left .name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  }
+  .caption-left .role {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-top: 2px;
+  }
+  .theme-pill {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+  .hero-portrait-card:hover .theme-pill {
+    background: rgba(167, 139, 250, 0.3);
+    border-color: rgba(167, 139, 250, 0.5);
+  }
+
+  .hero-card-hint {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: center;
+    letter-spacing: 0.02em;
+    transition: color 0.3s ease;
+  }
+  .hero-interactive-container:hover .hero-card-hint {
+    color: var(--ink-dim);
+  }
+
+  .pulse-badge {
+    animation: badgePulse 0.4s var(--ease) !important;
+    border-color: #a78bfa !important;
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.8) !important;
+  }
+  @keyframes badgePulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import InteractiveNameCard from "@/components/InteractiveNameCard";
 
 export default function AboutSection() {
   const { elementRef, isIntersecting } = useIntersectionObserver(0.2);
@@ -9,13 +10,7 @@ export default function AboutSection() {
     <section id="about" ref={elementRef}>
       <div className="wrap about-grid">
         <div className={`about-portrait reveal ${isIntersecting ? "in" : ""}`}>
-          <div className="about-portrait-inner">
-            <img
-              src="/images/riya_hero.jpg"
-              alt="Riya Jethva — UI/UX & Visual Designer"
-              className="about-portrait-img"
-            />
-          </div>
+          <InteractiveNameCard />
         </div>
         <div>
           <div className="eyebrow">About</div>
