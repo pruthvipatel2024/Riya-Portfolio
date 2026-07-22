@@ -5,6 +5,21 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 export default function FeaturedWork() {
   const { elementRef, isIntersecting } = useIntersectionObserver();
 
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const img = card.querySelector<HTMLImageElement>(".browser-scroll img");
+    const scrollContainer = card.querySelector<HTMLDivElement>(".browser-scroll");
+    if (img && scrollContainer) {
+      const imgHeight = img.getBoundingClientRect().height || img.clientHeight;
+      const containerHeight =
+        scrollContainer.getBoundingClientRect().height || scrollContainer.clientHeight;
+      const scrollDist = imgHeight - containerHeight;
+      if (scrollDist > 0) {
+        card.style.setProperty("--scroll-dist", `-${scrollDist}px`);
+      }
+    }
+  };
+
   return (
     <section id="work" ref={elementRef}>
       <div className="wrap">
@@ -18,10 +33,11 @@ export default function FeaturedWork() {
         </div>
 
         <div className="projects-list">
-          {/* Project 1: Online Appointment Booking System */}
-
           {/* Project 2: StyleMyHome */}
-          <div className={`project-card glass reveal ${isIntersecting ? "in" : ""}`}>
+          <div
+            className={`project-card glass reveal ${isIntersecting ? "in" : ""}`}
+            onMouseEnter={handleMouseEnter}
+          >
             <div
               className="project-visual"
               style={{
@@ -84,7 +100,10 @@ export default function FeaturedWork() {
           </div>
 
           {/* Project 3: Vastras */}
-          <div className={`project-card glass reveal ${isIntersecting ? "in" : ""}`}>
+          <div
+            className={`project-card glass reveal ${isIntersecting ? "in" : ""}`}
+            onMouseEnter={handleMouseEnter}
+          >
             <div
               className="project-visual"
               style={{
@@ -150,3 +169,4 @@ export default function FeaturedWork() {
     </section>
   );
 }
+
