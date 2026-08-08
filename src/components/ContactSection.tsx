@@ -62,7 +62,7 @@ export default function ContactSection() {
             >
               <div>
                 <div className="cl-label">CONTACT</div>
-                <div className="cl-value">+91 92659 11944</div>
+                <div className="cl-value">+91 8866390211</div>
               </div>
               <span className="contact-arrow">↗</span>
             </a>
